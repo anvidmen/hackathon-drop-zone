@@ -1,6 +1,6 @@
 import { useDropzone } from 'react-dropzone'
 import Placeholder from 'components/Placeholder/Placeholder'
-import FilesPreview from 'components/FilesPreview/FilesPreview'
+import FilePreview from 'components/FilePreview/FilePreview'
 import './styles.sass'
 
 const DropzoneField = ({files, fileErrors, onDrop}) => {
@@ -16,7 +16,7 @@ const DropzoneField = ({files, fileErrors, onDrop}) => {
             {...getRootProps({ isDragAccept, isFocused, isDragReject })}
         >
             <input {...getInputProps()} />
-            {files?.length ? files.map( file => <FilesPreview file={file} /> ):
+            {files?.length ? files.map( file => <FilePreview file={file} /> ):
                 <Placeholder />
             }
         </div>
