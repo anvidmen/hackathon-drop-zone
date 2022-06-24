@@ -1,0 +1,71 @@
+.dropzone
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    width: 100%
+
+.dropzone-field
+    width: 20rem
+
+.buttons
+    display: flex
+    flex-direction: column
+    justify-content: space-betwen
+    align-items: center
+
+    button
+        width: 20rem
+        height: 4rem
+        color: white
+        border-radius: 5px
+        margin: auto
+        font-weight: 600
+        font-size: 18px
+        letter-spacing: 1px
+        outline: none
+
+    :nth-child(1)
+        background: #000
+        border: 1px solid #44a03d
+        color: #69ec6d
+        margin-bottom: 1rem
+
+        &:hover
+            box-shadow: 1px 1px 3px 0px #69ec1d
+            cursor: pointer
+
+    :nth-child(2)
+        background: #44a03d
+        border: none
+
+        &:hover
+            box-shadow: 1px 1px 3px 0px #69ec1d
+            cursor: pointer
+
+@media screen and (min-width: 768px)
+    .dropzone-field
+        width: 32rem
+
+    .buttons
+        flex-direction: row
+        justify-content: center
+        align-items: center
+
+        :nth-child(1)
+            background: #000
+            border: 1px solid #44a03d
+            color: #69ec6d
+            margin: 0 1rem 0 0
+
+@media screen and (min-width: 1024px)
+    .dropzone
+        justify-content: space-around
+        flex-direction: row
+
+    .dropzone-field
+        width: 38rem
+        margin: 0 2rem
+
+    .upload-files
+        font-size: 20px
