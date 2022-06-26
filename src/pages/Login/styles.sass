@@ -1,0 +1,104 @@
+.register-form
+    max-width: 17rem
+    margin: 4rem auto
+    border-radius: 10px
+    box-shadow: 1px 1px 20px 0px #25c01a
+
+.header-title
+    text-align: center
+    padding: 3rem 0 2rem 0
+    margin: 0
+    font-family: 'Poppins'
+    font-size: 28px
+    color: white
+
+.row
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding-top: 1rem
+    max-width: 100%
+
+    input
+        width: 80%
+        height: 2.5rem
+        border-radius: 7px
+        box-sizing: border-box
+        border: none
+        font-family: 'Poppins'
+        font-size: 16px
+        padding: 0.2rem
+        box-shadow: inset 0px -3px 0px 0px rgba(147, 234, 173, 0.7)
+        transition: box-shadow 0.2s ease-in
+
+    input:focus
+        box-shadow: inset 0px -3px 0px 0px rgba(84, 255, 87, 0.8)
+        outline: none
+
+    input::-webkit-input-placeholder
+        opacity: 1
+        transition: opacity 0.25s ease-out
+
+    input:focus::-webkit-input-placeholder
+        opacity: 0
+
+    input:hover::-webkit-input-placeholder
+        opacity: 0
+
+    label
+        align-self: start
+        padding: 1rem 0rem 0.4rem 1.7rem
+        padding-top: 1rem
+        font-size: 18px
+        font-family: "Poppins"
+        color: rgba(255, 255, 255, 0.9)
+
+button
+    border-radius: 20px
+    width: 80%
+    height: 3rem
+    font-family: "Poppins"
+    font-size: 24px
+    font-weight: 700
+    color: white
+    background: linear-gradient(90deg,rgb(0, 102, 17) 0%, rgb(22, 175, 12) 50%, rgb(0, 102, 17) 100%)
+    border: 0px
+    cursor: pointer
+    transition: opacity 0.25s ease-out
+    margin: 2rem 0
+
+    &:hover
+        background: linear-gradient(90deg,rgb(22, 175, 12) 0%, rgb(0, 102, 17) 50%, rgb(22, 175, 12) 100%)
+        opacity: 0.9
+
+.redirect
+    text-align: center
+    color: white
+    padding: 1rem 0 3rem 0
+    max-width: 100%
+    font-family: "Poppins"
+
+    a
+        margin-left: 0.4rem
+        color: #18b70d
+        text-decoration: none
+
+    a:hover
+        color: #18c80c
+
+@media screen and (min-width: 768px)
+    .register-form
+        max-width: 22rem
+
+    .row
+        label
+            padding: 1rem 0rem 0.4rem 2.2rem
+
+@media screen and (min-width: 1024px)
+    .register-form
+        max-width: 25rem
+
+    .row
+        label
+            padding: 1rem 0rem 0.4rem 2.5rem
+          
