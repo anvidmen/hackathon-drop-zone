@@ -3,6 +3,7 @@ import axios from 'axios'
 import DropzoneField from 'components/DropzoneField/DropzoneField'
 import LoginWithGoogle from 'components/LoginWithGoogle/LoginWithGoogle'
 import { gapi } from 'gapi-script'
+import Swal from 'sweetalert2'
 import './styles.sass'
 
 const {
@@ -13,6 +14,24 @@ const {
 const Dropzone = () => {
     const [files, setFiles] = useState([])
     const [fileErrors, setfileErrors] = useState([])
+
+    const onUploadFiles = results => {
+        const anyRejected = results.some(result => result.status === 'rejected')
+
+        setFiles([])
+
+        if (anyRejected) {
+            return Swal.fire({
+                icon: 'warning',
+                text: 'Algunos archivos no se han podido subir a Google Drive'
+            })
+        }
+
+        return Swal.fire({
+            icon: 'success',
+            text: 'Los archivos se han subido correctamente a Google Drive'
+        })
+    }
 
     const onDrop = (acceptedFiles, rejectedFiles) => {
         setFiles(prevState => {
@@ -48,7 +67,7 @@ const Dropzone = () => {
         const response = await axios.post(REACT_APP_GOOGLE_DRIVE_API_URL, file, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`, 'Content-Type': `${file.type}`,
-                'Content-Length': `${file.size}`, 'title': `${file.name}`
+                'Content-Length': `${file.size}`, 'name': `${file.name}`
             }
         })
         return response
@@ -56,7 +75,7 @@ const Dropzone = () => {
 
     const uploadFiles = async () => {
         Promise.allSettled(files.map(file => uploadFile(file)))
-            .then((results) => results.forEach((result) => console.log(result)))
+            .then((results) => onUploadFiles(results))
     }
 
     const deleteFiles = () => setFiles([])
