@@ -35,9 +35,9 @@ const Register = () => {
         }
 
         try {
-            const user =  await registerUser(username, email, password)
-            handleLogin(user)
-            navigate('/login')
+            const data =  await registerUser(username, email, password)
+            handleLogin(data.user)
+            navigate('/')
         } catch (error) {
             console.log(error)
             return Swal.fire({
@@ -85,7 +85,7 @@ const Register = () => {
                 </div>
                 <div className='redirect'>
                     <span>¿Tienes cuenta?</span>
-                    <Link to='/login'>Iniciar sesión</Link>
+                    <Link to='/'>Iniciar sesión</Link>
                 </div>
             </form>
         </div>
