@@ -1,0 +1,57 @@
+.container-google
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    width: 20rem
+    margin: 5rem 2rem
+    color: white
+
+    h1
+        margin-bottom: 0
+        font-weight: 600
+
+    p
+        font-weight: 400
+        text-align: justify
+
+    hr
+        border: 0
+        width: 100%
+        height: 2px
+        background: linear-gradient(to right, rgba(255, 253, 253, 0), rgba(255, 255, 255, 0.699), rgba(255, 255, 255, 0))
+        margin: 2rem 0 3rem 0
+
+.button-google
+    width: 100%
+    height: 3.4rem
+    background: #130f26 !important
+    border: 2px solid rgba(255, 253, 253, 0.8) !important
+    padding: 1rem !important
+
+    div
+        background: #130f26 !important
+
+    span
+        color: white
+        font-size: 18px
+        font-weight: 500
+        letter-spacing: 1px
+        margin-left: 1rem
+
+@media screen and (min-width: 768px)
+    .container-google
+        width: 32rem
+
+        p
+            text-align: start
+
+    .button-google
+        span
+            font-size: 20px
+            margin-left: 2rem
+
+@media screen and (min-width: 1024px)
+    .button-google
+        span
+            margin-left: 3rem
