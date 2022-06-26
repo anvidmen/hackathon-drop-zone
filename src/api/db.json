@@ -1,0 +1,22 @@
+{
+  "register": [
+    {
+      "id": 1,
+      "username": "Juan David",
+      "email": "anvidmen@gmail.com",
+      "password": "123456"
+    },
+    {
+      "username": "BrunoLima",
+      "email": "david22tim@hotmail.com",
+      "password": "12323213",
+      "id": 2
+    },
+    {
+      "username": "mery",
+      "email": "david22tim@hotmail.co",
+      "password": "qewaweas",
+      "id": 3
+    }
+  ]
+}
