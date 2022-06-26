@@ -29,7 +29,7 @@ const Login = () => {
 
         try {
             const user = await loginUser(email, password)
-            navigate('/dropzone')
+            navigate('/')
         } catch (error) {
             return Swal.fire({
                 icon: 'error',

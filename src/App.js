@@ -5,11 +5,12 @@ import Register from "pages/Register/Register"
 import Login from 'pages/Login/Login'
 
 const App = () => {
+
   const user = retrieveUser()
 
   const ProtectedRoute = ({ user, children }) => {
     if (!user) {
-      return <Navigate to="/" replace />
+      return <Navigate to='/login' replace />
     }
     return children;
   };
@@ -17,14 +18,14 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' caseSensitive={false} element={<Login />} />
-        <Route path='/register' caseSensitive={false} element={<Register />} />
-        <Route path='/dropzone' caseSensitive={false} element={
+        <Route path='/' caseSensitive={false} element={
           <ProtectedRoute user={user}>
             <DropZone />
           </ProtectedRoute>
         }
         />
+        <Route path='/login' caseSensitive={false} element={<Login />} />
+        <Route path='/register' caseSensitive={false} element={<Register />} />
       </Routes>
     </Router>
   )

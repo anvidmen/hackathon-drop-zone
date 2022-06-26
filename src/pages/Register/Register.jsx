@@ -85,7 +85,7 @@ const Register = () => {
                 </div>
                 <div className='redirect'>
                     <span>¿Tienes cuenta?</span>
-                    <Link to='/'>Iniciar sesión</Link>
+                    <Link to='/login'>Iniciar sesión</Link>
                 </div>
             </form>
         </div>
