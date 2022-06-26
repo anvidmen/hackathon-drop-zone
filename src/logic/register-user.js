@@ -4,9 +4,10 @@ const registerUser = async (username, email, password) => {
     const data = { username, email, password }
     try {
         const response = await register(data)
-        return response.data
+        return response?.data
     } catch (error) {
-        throw new Error(error)
+        const { response } = error
+        throw new Error(response.data)
     }
 }
 
