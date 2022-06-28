@@ -1,14 +1,18 @@
-import { useState } from "react"
-import { Link } from "react-router-dom"
-import { useNavigate } from "react-router-dom"
-import loginUser from "logic/login-user"
+import { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AppContext } from 'providers/AppProvider'
+import { validatedEmail } from 'utils/validations'
+import loginUser from 'logic/login-user'
 import InputForm from 'components/InputForm/InputForm'
 import Swal from 'sweetalert2'
-import '../Register/styles.sass'
+import './styles.sass'
 
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [emailError, setEmailError] = useState('')
+    const [user, setUser] = useContext(AppContext)
+
 
     const navigate = useNavigate()
 
@@ -27,8 +31,13 @@ const Login = () => {
             })
         }
 
+        if (!email || validatedEmail(email) === false) {
+            return setEmailError('El formato del email no es valido')
+        }
+
         try {
             const user = await loginUser(email, password)
+            setUser(user)
             navigate('/')
         } catch (error) {
             return Swal.fire({
@@ -51,7 +60,9 @@ const Login = () => {
                     onChange={(e) => setEmail(e.target.value)}
                     id='email'
                     autoComplete="email"
+                    required
                 />
+                <small className="text-danger">{emailError}</small>
                 <InputForm
                     title='Contraseña'
                     type="password"
@@ -62,6 +73,7 @@ const Login = () => {
                     autoComplete="current-password"
                     required
                 />
+                <small className="text-danger"></small>
                 <div className='row'>
                     <button>Acceder</button>
                 </div>

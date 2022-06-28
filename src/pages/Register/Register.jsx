@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { validatedEmail } from 'utils/validations'
 import registerUser from 'logic/register-user'
 import Swal from 'sweetalert2'
 import InputForm from 'components/InputForm/InputForm'
@@ -9,6 +10,7 @@ const Register = () => {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [email, setEmail] = useState('')
+    const [emailError, setEmailError] = useState('')
     const navigate = useNavigate()
 
     const handleLogin = user => {
@@ -34,10 +36,14 @@ const Register = () => {
             })
         }
 
+        if (!email || validatedEmail(email) === false) {
+            return setEmailError('El formato del email no es valido')
+        }
+
         try {
             const data =  await registerUser(username, email, password)
             handleLogin(data.user)
-            navigate('/')
+            navigate('/login')
         } catch (error) {
             console.log(error)
             return Swal.fire({
@@ -61,6 +67,7 @@ const Register = () => {
                     id='username'
                     autoComplete='username'
                 />
+                <small className="text-danger"></small>
                 <InputForm
                     title='Email'
                     type='email'
@@ -70,6 +77,7 @@ const Register = () => {
                     id='email'
                     autoComplete='email'
                 />
+                <small className="text-danger">{emailError}</small>
                 <InputForm
                     title='Contraseña'
                     type='password'
@@ -80,6 +88,7 @@ const Register = () => {
                     autoComplete='current-password'
                     required
                 />
+                <small className="text-danger"></small>
                 <div className='row'>
                     <button>Registrarse</button>
                 </div>
