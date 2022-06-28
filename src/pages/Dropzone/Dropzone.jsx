@@ -85,8 +85,8 @@ const Dropzone = () => {
             <div className='dropzone-field'>
                 <DropzoneField onDrop={onDrop} files={files} fileErrors={fileErrors} />
                 <div className='buttons'>
-                    <button onClick={deleteFiles}>Eliminar archivos</button>
-                    <button onClick={uploadFiles}>Subir archivos</button>
+                    <button disabled={!files.length} onClick={deleteFiles}>Eliminar archivos</button>
+                    <button disabled={!files.length} onClick={uploadFiles}>Subir archivos</button>
                 </div>
             </div>
             <LoginWithGoogle />
