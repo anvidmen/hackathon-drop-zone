@@ -4,7 +4,7 @@ import { validatedEmail } from 'utils/validations'
 import registerUser from 'logic/register-user'
 import Swal from 'sweetalert2'
 import InputForm from 'components/InputForm/InputForm'
-import './styles.sass'
+import '../Login/styles.sass'
 
 const Register = () => {
     const [username, setUsername] = useState('')
