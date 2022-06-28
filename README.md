@@ -30,7 +30,7 @@ This project is currently in development. Users can login and register in the ap
 
 #### Deploy
 
-    - netlify
+    - surge
 
 ## Installation and Setup Instructions
 
@@ -52,7 +52,7 @@ $ open http://localhost:3000/
 
 ### Demo
 
-[Welcome to Drop Zone](https://drop-zone-om.netlify.app/)
+[Welcome to Drop Zone](https://dropzone.surge.sh)
 
 ## Codefactor Score
 
