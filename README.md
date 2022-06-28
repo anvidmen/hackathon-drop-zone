@@ -30,7 +30,7 @@ This project is currently in development. Users can login and register in the ap
 
 #### Deploy
 
-    - Github Pages
+    - netlify
 
 ## Installation and Setup Instructions
 
