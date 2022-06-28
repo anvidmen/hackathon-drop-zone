@@ -1,8 +1,11 @@
-import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { gapi } from 'gapi-script'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { logout } from 'utils/storage'
+import { AiOutlineLogout } from 'react-icons/ai'
 import DropzoneField from 'components/DropzoneField/DropzoneField'
 import LoginWithGoogle from 'components/LoginWithGoogle/LoginWithGoogle'
-import { gapi } from 'gapi-script'
 import Swal from 'sweetalert2'
 import './styles.sass'
 
@@ -14,6 +17,7 @@ const {
 const Dropzone = () => {
     const [files, setFiles] = useState([])
     const [fileErrors, setfileErrors] = useState([])
+    const navigate = useNavigate
 
     const onUploadFiles = results => {
         const anyRejected = results.some(result => result.status === 'rejected')
@@ -80,9 +84,15 @@ const Dropzone = () => {
 
     const deleteFiles = () => setFiles([])
 
+    const handleLogout = () => {
+        logout()
+        navigate('/')
+    }
+
     return (
         <div className='dropzone'>
             <div className='dropzone-field'>
+                <Link className='logout' to='/' onClick={handleLogout}><AiOutlineLogout size={32} /></Link>
                 <DropzoneField onDrop={onDrop} files={files} fileErrors={fileErrors} />
                 <div className='buttons'>
                     <button disabled={!files.length} onClick={deleteFiles}>Eliminar archivos</button>
