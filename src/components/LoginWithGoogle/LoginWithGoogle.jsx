@@ -21,26 +21,25 @@ const LoginWithGoogle = () => {
             <p>Para subir tus archivos de forma simple a drive, puedes hacer Login a través de Google.</p>
             <hr />
             {
-                token ?
+                token ? 
+                <GoogleLogout
+                    className='button-google'
+                    client_id={CLIENT_ID}
+                    onLogoutSuccess={onLogout}
+                >
+                    <span>Logout</span>
+                </GoogleLogout> :
                     <GoogleLogin
                         className='button-google'
                         clientId={CLIENT_ID}
                         onSuccess={onSuccess}
                         onFailure={onError}
-                        cookiePolicy={'single_host_origin'}
+                        cookiePolicy={'none'}
                         isSignedIn={true}
                     >
                         <span>Login con Google</span>
-                    </GoogleLogin> :
-                    <GoogleLogout
-                        className='button-google'
-                        client_id={CLIENT_ID}
-                        onLogoutSuccess={onLogout}
-                    >
-                        <span>Logout</span>
-                    </GoogleLogout>
+                    </GoogleLogin>
             }
-
         </div>
     )
 }

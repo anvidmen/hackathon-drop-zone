@@ -1,15 +1,20 @@
+import { useContext, useEffect } from 'react'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom'
+import { AppContext } from 'providers/AppProvider'
 import retrieveUser from 'logic/retrieve-user'
 import DropZone from "pages/Dropzone/Dropzone"
 import Register from "pages/Register/Register"
 import Login from 'pages/Login/Login'
 
 const App = () => {
+  const [user, setUser] = useContext(AppContext)
 
-  const user = retrieveUser()
+  useEffect(() => {
+    setUser(retrieveUser())
+  }, [setUser])
 
-  const ProtectedRoute = ({ user, children }) => {
-    if (!user) {
+  const ProtectedRoute = ({ loggedUser, children }) => {
+    if (!loggedUser) {
       return <Navigate to='/login' replace />
     }
     return children;
@@ -18,8 +23,8 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' caseSensitive={false} element={
-          <ProtectedRoute user={user}>
+        <Route exact path='/' caseSensitive={false} element={
+          <ProtectedRoute loggedUser={user}>
             <DropZone />
           </ProtectedRoute>
         }
